@@ -1,4 +1,4 @@
-bg_tit: &bg_tit {stack: [{background: {color: 5faf5fff}}, {underline: {size: 3, color: ea6962ff}}]}
+bg_tit: &bg_tit {stack: [{background: {color: 9ADCD59A}}, {underline: {size: 3, color: ea6962ff}}]}
 bg_tot: &bg_tot {underline: {size: 3, color: ea6962ff}}
 bg_bat: &bg_bat {stack: [{background: {color: 28282800}}, {underline: {size: 3, color: 5f8700ff}}]}
 hack: &hack Hack Nerd Font:pixelsize=15
@@ -9,8 +9,8 @@ bar:
   spacing: 2
   margin: 0
   layer: bottom
-  foreground: eeeeeeff
-  background: 1c1c1cff
+  foreground: 35b9abff
+  background: 061C2A06
 
   left:
     - river:
@@ -348,9 +348,8 @@ bar:
                   underline:
                     size: 3
                     color: 35b9abff
-    - script:
-        path: /home/uncomfy/.config/yambar/get_cpu.sh
-        args: [1]
+    - cpu:
+        interval: 2500
         content:
           - string:
               text: " {cpu}%"
