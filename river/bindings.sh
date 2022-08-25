@@ -7,22 +7,27 @@
 mod="Mod4"
 
 # Set your terminal emulator - foot
-term=$HOME/.local/bin/footclient
+term=foot
 
 # LOCK ME UP  HERE TOO BUT BE ACTIVE
 riverctl map normal $mod "equal" spawn 'swaylock -f -i $HOME/.config/river/backgrounds/background.jpg'
-riverctl map normal $mod I spawn "$HOME/.local/bin/foot -w '500x200' -a firefoxprofile $HOME/.config/river/firefox.sh"
+riverctl map normal $mod I spawn "foot -w '500x200' -a firefoxprofile $HOME/.config/river/firefox.sh"
 riverctl map normal $mod O spawn "chromium --enable-features=UseOzonePlatform --ozone-platform=wayland"
-riverctl map normal $mod U spawn "$HOME/.local/bin/fuzzel -i Papirus -f 'Monofur Nerd Font' --background=1c1c1cff -t eeeeeeff -w 35 --selection-color af87d7ff --selection-text-color eeeeeeff -m d0d0d0ff -T $term"
-riverctl map normal $mod+Shift U spawn "$HOME/.local/bin/foot -w '400x400' -a launcher /home/uncomfy/.config/river/launcher.sh"
-riverctl map normal $mod T spawn "$HOME/.local/bin/foot -f 'JuliaMono:size=8, Hack Nerd Font:size=8, Monofur Nerd Font:size=8, Noto Color Emoji:size=8' -a erudite $HOME/.config/river/erudite.sh"
-riverctl map normal $mod "slash" spawn "$HOME/.local/bin/foot -w '1200x600' -f 'JuliaMono:size=6, Hack Nerd Font:size=8, Monofur Nerd Font:size=8, Noto Color Emoji:size=8' -a library $HOME/.config/river/book.sh"
+riverctl map normal $mod U spawn "fuzzel -w 35 -i Papirus -f 'JetBrains Mono:size=16' -s f2d26fff -S 173f4fff -t 35b9abff -b 061C2Aff -r 0 -C 81c13bff -T $term"
+riverctl map normal $mod+Shift U spawn "$HOME/.config/river/launcher.sh"
+riverctl map normal $mod T spawn "foot -f 'JuliaMono:size=8, Hack Nerd Font:size=8, Monofur Nerd Font:size=8, Noto Color Emoji:size=8' -a erudite $HOME/.config/river/erudite.sh"
+riverctl map normal $mod "slash" spawn "$HOME/.config/river/book.sh"
+riverctl map normal $mod "apostrophe" spawn 'fnottctl dismiss'
+riverctl map normal $mod "backslash" spawn 'fnottctl actions'
+riverctl map normal $mod B spawn "$HOME/.config/river/browser.sh"
+riverctl map normal $mod V spawn tessen
+riverctl map normal $mod bracketright spawn "$HOME/.local/bin/colorpicker.sh"
 
-riverctl map normal $mod C spawn "$HOME/.local/bin/foot -w '700x400' -a clipfoot /home/uncomfy/.config/river/clipboardmanager.sh"
+riverctl map normal $mod C spawn "$HOME/.config/river/clipboardmanager.sh"
 
 # Screenshot scripts
-riverctl map normal "None" Print spawn $HOME/.local/bin/mygrimshot.sh
-riverctl map normal "$mod" Print spawn '$HOME/.local/bin/mygrimshot.sh area'
+riverctl map normal None Print spawn $HOME/.local/bin/mygrimshot.sh
+riverctl map normal $mod Print spawn "$HOME/.local/bin/mygrimshot.sh area"
 
 # Mod+Shift+Return to start an instance of foot (https://codeberg.org/dnkl/foot)
 riverctl map normal $mod+Shift Return spawn $term
@@ -63,7 +68,7 @@ riverctl map normal $mod+Shift Comma send-to-output previous
 riverctl map normal $mod Return zoom
 
 # Back to previous tag
-riverctl map normal $mod B send-to-previous-tags
+riverctl map normal $mod+Shift B send-to-previous-tags
 
 
 # Mod + Left Mouse Button to move views
@@ -126,7 +131,7 @@ do
     riverctl map $mode None XF86Eject spawn eject -T
     
     # Touchpad
-    touchpad_device="1267:12632:ELAN050A:01_04F3:3158_Touchpad"
+    touchpad_device="pointer-1267-12632-ELAN050A:01_04F3:3158_Touchpad"
     riverctl input $touchpad_device events enabled
     riverctl input $touchpad_device natural-scroll enabled
     riverctl input $touchpad_device tap enabled
@@ -135,10 +140,9 @@ do
     riverctl input $touchpad_device drag-lock enabled
 
     # Control pulse audio volume with pamixer (https://github.com/cdemoulins/pamixer)
-    riverctl map $mode None XF86AudioRaiseVolume  spawn 'pamixer -i 5'
-    riverctl map $mode None XF86AudioLowerVolume  spawn 'pamixer -d 5'
-    riverctl map $mode None XF86AudioMute         spawn 'pamixer --toggle-mute'
-
+    riverctl map $mode None XF86AudioRaiseVolume  spawn '$HOME/.config/yambar/volup.sh'
+    riverctl map $mode None XF86AudioLowerVolume  spawn '$HOME/.config/yambar/voldown.sh'
+		riverctl map $mode None XF86AudioMute spawn "$HOME/.config/river/volmute.sh"
     # Control MPRIS aware media players with playerctl (https://github.com/altdesktop/playerctl)
     riverctl map $mode None XF86AudioMedia spawn 'playerctl -p spotify play-pause'
     riverctl map $mode None XF86AudioPlay  spawn 'playerctl -p spotify play-pause'
@@ -165,6 +169,7 @@ riverctl float-filter-add app-id "gnome-calculator"
 riverctl float-filter-add app-id "library"
 riverctl float-filter-add app-id "firefoxprofile"
 riverctl float-filter-add app-id "clipfoot"
+riverctl float-filter-add app-id "browser"
 
 # Set app-ids of views which should use client side decorations
 riverctl csd-filter-add app-id "gedit"
@@ -232,7 +237,7 @@ riverctl map normal $mod+Mod1+Shift L resize horizontal 100
 
 # Stacktile
 riverctl default-layout stacktile
-riverctl spawn "$HOME/.local/bin/stacktile --per-tag-config --primary-count 2  --secondary-count 3 --primary-sublayout stack --primary-position left --primary-ratio 0.55 --outer-padding 0 --inner-padding 1 --secondary-sublayout rows --secondary-ratio 0.5 --remainder-sublayout stack" 
+riverctl spawn "stacktile --per-tag-config --primary-count 2  --secondary-count 3 --primary-sublayout stack --primary-position left --primary-ratio 0.55 --outer-padding 0 --inner-padding 1 --secondary-sublayout rows --secondary-ratio 0.5 --remainder-sublayout stack" 
 # River will send the process group of the init executable SIGTERM on exit.
 
 ########

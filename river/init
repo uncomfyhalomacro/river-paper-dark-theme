@@ -14,13 +14,14 @@
 #'#########
 gsettings set org.gnome.desktop.default-applications.terminal exec foot.desktop
 riverctl spawn "dbus-update-activation-environment SEATD_SOCK DISPLAY WAYLAND_DISPLAY DESKTOP_SESSION=river XDG_CURRENT_DESKTOP=river"
-riverctl spawn "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=river"
+riverctl spawn "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
+riverctl spawn "/usr/libexec/polkit-kde-authentication-agent-1"
 
 ###########################
 # SCREENCASTING AND SOUND #
 ###########################
-#riverctl spawn "exec /usr/libexec/xdg-desktop-portal-wlr -r"
-#riverctl spawn "exec /usr/libexec/xdg-desktop-portal -r"
+riverctl spawn "exec /usr/libexec/xdg-desktop-portal-wlr -r"
+riverctl spawn "exec /usr/libexec/xdg-desktop-portal -r"
 
 ##########
 # RELOAD #
@@ -32,8 +33,10 @@ riverctl map normal "Mod4" R spawn $HOME/.config/river/init
 # Startup Widgets #
 ###################
 riverctl spawn "river-tag-overlay --square-size 30 --background-colour 0xeeeeeeff --border-colour 0x000000 --square-active-occupied-colour 0x444444ff --square-active-background-colour 0xfcdbffff --square-active-border-colour 0x81a1c1 --tag-amount 11 --anchors 0:0:0:0 --square-padding 3"
+riverctl spawn $HOME/.config/river/wobsock.sh
 riverctl spawn $HOME/.config/river/wlsunset.sh
-riverctl spawn $HOME/.config/mako/mako.sh
+# riverctl spawn $HOME/.config/mako/mako.sh
+riverctl spawn $HOME/.config/fnott/fnott.sh
 riverctl spawn $HOME/.config/river/swaybg.sh
 riverctl spawn $HOME/.config/river/bindings.sh
 riverctl spawn $HOME/.config/yambar/yambar.sh

@@ -2,4 +2,4 @@
 
 killall -q wbg
 while pgrep -x wbg >/dev/null; do sleep 1; done
-exec $HOME/.local/bin/wbg ~/.config/river/backgrounds/background.jpg &
+exec wbg /usr/share/wallpapers/openSUSEtumbleweed-1920x1080.jpg

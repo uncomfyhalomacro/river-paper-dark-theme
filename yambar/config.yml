@@ -1,20 +1,22 @@
-bg_tit: &bg_tit {stack: [{background: {color: 9ADCD59A}}, {underline: {size: 3, color: ea6962ff}}]}
-bg_tot: &bg_tot {underline: {size: 3, color: ea6962ff}}
+bg_tit: &bg_tit {stack: [{background: {color: ffc10766}}, {underline: {size: 3, color: ea6962ff}}]}
+bg_tot: &bg_tot {underline: {size: 3, color: ea6962aa}}
 bg_bat: &bg_bat {stack: [{background: {color: 28282800}}, {underline: {size: 3, color: 5f8700ff}}]}
-hack: &hack Hack Nerd Font:pixelsize=15
+hack: &hack JetBrainsMono,Symbols Nerd Font:,Noto Sans Symbols,Noto Sans CJK TC,Noto Sans CJK KR,Noto Sans CJK JP,Noto Sans CJK HK,Noto Sans CJK SC,Noto Sans Symbols2:pixelsize=16
+hack2: &hack2 JetBrainsMono,Symbols Nerd Font,Noto Sans Symbols,Noto Sans CJK TC,Noto Sans CJK KR,Noto Sans CJK JP,Noto Sans CJK HK,Noto Sans CJK SC,Noto Sans Symbols2:pixelsize=12:style:Bold
+media_font: &media_font JetBrainsMono,Symbols Nerd Font, Noto Sans Symbols,Noto Sans CJK TC,Noto Sans CJK KR,Noto Sans CJK JP,Noto Sans CJK HK,Noto Sans CJK SC,Noto Sans Symbols2:pixelsize=24:style:Bold
 bar:
   height: 40
   location: top
-  font: Hack Nerd Font:pixelsize=11
+  font: &hack
   spacing: 2
   margin: 0
   layer: bottom
   foreground: 35b9abff
-  background: 061C2A06
+  background: 061C2Aff
 
   left:
     - river:
-        font: Hack Nerd Font:pixelsize=14:style:Bold
+        font: &hack
         anchors:
           - base: &river_base
               left-margin: 10
@@ -60,7 +62,7 @@ bar:
   
   center:
     - river:
-        font: Hack Nerd Font:pixelsize=12
+        font: &hack
         title:
           map:
             tag: title
@@ -91,10 +93,10 @@ bar:
                  spacing: 0
                  items:
                    - string:
-                      font: Hack Nerd Font:pixelsize=25
+                      font: &media_font
                       text: "" 
                       left-margin: 5
-                      right-margin: 5
+                      right-margin: 0
                       deco:
                         underline:
                           size: 3
@@ -134,10 +136,10 @@ bar:
                 size: 3
                 color: f7e202ff
             on-click:
-              wheel-up: brightnessctl s +1%
-              wheel-down: brightnessctl s 1%-
+              wheel-up: /home/uncomfy/.config/yambar/blightup.sh
+              wheel-down: /home/uncomfy/.config/yambar/blightdown.sh
     - network:
-        name: enp6s0
+        name: enp7s0
         content:
           map:
             tag: carrier
@@ -209,7 +211,7 @@ bar:
                                   size: 3
                                   color: f702beff
     - alsa:
-        card: hw:PCH
+        card: default
         mixer: Master
         content:
           map:
@@ -219,9 +221,9 @@ bar:
               true:
                 map:
                   on-click:
-                    left: pamixer -t
-                    wheel-down: pamixer -d 5
-                    wheel-up: pamixer -i 5
+                    left: /home/uncomfy/.config/river/volmute.sh
+                    wheel-down: /home/uncomfy/.config/yambar/voldown.sh
+                    wheel-up: /home/uncomfy/.config/yambar/volup.sh
                   tag: muted
                   values:
                     true:
@@ -351,13 +353,25 @@ bar:
     - cpu:
         interval: 2500
         content:
-          - string:
-              text: " {cpu}%"
-              left-margin: 4
-              deco:
-                underline:
-                  size: 3
-                  color: f76802ff
+          list:
+            spacing: 0
+            items:
+              - string:
+                  text: ""
+                  font: JuliaMono,Symbols Nerd Font, Noto Sans Symbols, Noto Sans CJK TC, Noto Sans CJK KR, Noto Sans CJK JP, Noto Sans CJK HK, Noto Sans CJK SC, Noto Sans Symbols2:pixelsize=16:style:Bold
+                  left-margin: 2
+                  right-margin: 0
+                  deco:
+                    underline:
+                      size: 3
+                      color: f76802ff
+              - string:
+                  text: "{cpu}%"
+                  left-margin: 4
+                  deco:
+                    underline:
+                      size: 3
+                      color: f76802ff
     - script:
         path: /home/uncomfy/.config/yambar/get_updates.sh
         args: [6]
@@ -366,9 +380,10 @@ bar:
             spacing: 0
             items:
               - string:
-                  text: " "
-                  left-margin: 1
-                  font: Hack Nerd Font:pixelsize=16:style:Bold
+                  text: ""
+                  left-margin: 2
+                  right-margin: 2
+                  font: JuliaMono,Symbols Nerd Font, Noto Sans Symbols, Noto Sans CJK TC, Noto Sans CJK KR, Noto Sans CJK JP, Noto Sans CJK HK, Noto Sans CJK SC, Noto Sans Symbols2:pixelsize=16:style:Bold
                   deco:
                     underline:
                       size: 3
