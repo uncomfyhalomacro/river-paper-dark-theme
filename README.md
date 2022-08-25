@@ -21,8 +21,8 @@ You must have the following software in order to make this work:
 - [yambar](https://codeberg.org/dnkl/yambar) (lightweight bar)
 - [wbg](https://codeberg.org/dnkl/wbg) (simple wallpaper)
 - [fuzzel](https://codeberg.org/dnkl/fuzzel) (a rofi inspired application launcher)
-- [foot](https://codeberg.org/dnkl/foot) (a native wayland terminal emulator)
-- [mako](https://github.com/emersion/mako) (a notification daemon for wayland)
+- [foot](https://codeberg.org/dnkl/foot) (a native wayland terminal emulator - using papercolor light palette for this, sorry not sorry)
+- [fnott](https://codeberg.org/dnkl/fnott) (a notification daemon for wayland - keyboard driven)
 - Install a Nerd Font. You can refer that I have in the repo.
 
 Then either copy `wayriver.sh` to somewhere you want (e.g. $HOME) so you can start river there, assuming you are not using a login display manager such as SDDM or LightDM.
