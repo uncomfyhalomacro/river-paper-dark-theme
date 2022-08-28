@@ -23,6 +23,7 @@ riverctl map normal $mod B spawn "$HOME/.config/river/browser.sh"
 riverctl map normal $mod V spawn tessen
 riverctl map normal $mod bracketright spawn "$HOME/.local/bin/colorpicker.sh"
 riverctl map normal $mod n spawn "$HOME/.config/river/querynotes.sh"
+riverctl map normal $mod q spawn "$HOME/.config/river/file.sh"
 
 riverctl map normal $mod C spawn "$HOME/.config/river/clipboardmanager.sh"
 
