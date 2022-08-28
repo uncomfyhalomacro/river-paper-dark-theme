@@ -18,7 +18,7 @@ riverctl map normal $mod+Shift U spawn "$HOME/.config/river/launcher.sh"
 riverctl map normal $mod T spawn "foot -f 'JuliaMono:size=8, Hack Nerd Font:size=8, Monofur Nerd Font:size=8, Noto Color Emoji:size=8' -a erudite $HOME/.config/river/erudite.sh"
 riverctl map normal $mod "slash" spawn "$HOME/.config/river/book.sh"
 riverctl map normal $mod "apostrophe" spawn 'fnottctl dismiss'
-riverctl map normal $mod "backslash" spawn 'fnottctl actions'
+riverctl map normal $mod "backslash" spawn "$HOME/.config/river/fnottctl_list.sh"
 riverctl map normal $mod B spawn "$HOME/.config/river/browser.sh"
 riverctl map normal $mod V spawn tessen
 riverctl map normal $mod bracketright spawn "$HOME/.local/bin/colorpicker.sh"
