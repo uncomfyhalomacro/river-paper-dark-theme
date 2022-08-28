@@ -10,25 +10,26 @@ mod="Mod4"
 term=foot
 
 # LOCK ME UP  HERE TOO BUT BE ACTIVE
-riverctl map normal $mod "equal" spawn 'swaylock -f -i $HOME/.config/river/backgrounds/background.jpg'
+riverctl map normal $mod "equal" spawn "swaylock -f -i $HOME/.config/river/backgrounds/background.jpg"
 riverctl map normal $mod I spawn "foot -w '500x200' -a firefoxprofile $HOME/.config/river/firefox.sh"
 riverctl map normal $mod O spawn "chromium --enable-features=UseOzonePlatform --ozone-platform=wayland"
 riverctl map normal $mod U spawn "fuzzel -w 35 -P 'Run app: ' -i Papirus -f 'JetBrains Mono:size=16' -s f2d26fff -S 173f4fff -t 35b9abff -b 061C2Add -r 0 -C 81c13bff -T $term"
 riverctl map normal $mod+Shift U spawn "$HOME/.config/river/launcher.sh"
 riverctl map normal $mod T spawn "foot -f 'JuliaMono:size=8, Hack Nerd Font:size=8, Monofur Nerd Font:size=8, Noto Color Emoji:size=8' -a erudite $HOME/.config/river/erudite.sh"
 riverctl map normal $mod "slash" spawn "$HOME/.config/river/book.sh"
-riverctl map normal $mod "apostrophe" spawn 'fnottctl dismiss'
-riverctl map normal $mod "backslash" spawn "$HOME/.config/river/fnottctl_list.sh"
+riverctl map normal $mod "apostrophe" spawn "$HOME/.config/river/fnottctl_list.sh"
+riverctl map normal $mod "backslash" spawn "$HOME/.config/river/fnottctl_list.sh act"
+riverctl map normal $mod bracketright spawn "fnottctl dismiss all"
 riverctl map normal $mod B spawn "$HOME/.config/river/browser.sh"
 riverctl map normal $mod V spawn tessen
-riverctl map normal $mod bracketright spawn "$HOME/.local/bin/colorpicker.sh"
+riverctl map normal $mod bracketleft spawn "$HOME/.local/bin/colorpicker.sh"
 riverctl map normal $mod n spawn "$HOME/.config/river/querynotes.sh"
 riverctl map normal $mod q spawn "$HOME/.config/river/file.sh"
 
 riverctl map normal $mod C spawn "$HOME/.config/river/clipboardmanager.sh"
 
 # Screenshot scripts
-riverctl map normal None Print spawn $HOME/.local/bin/mygrimshot.sh
+riverctl map normal None Print spawn "$HOME/.local/bin/mygrimshot.sh"
 riverctl map normal $mod Print spawn "$HOME/.local/bin/mygrimshot.sh area"
 
 # Mod+Shift+Return to start an instance of foot (https://codeberg.org/dnkl/foot)
